@@ -15,15 +15,15 @@ import { useState } from "react";
 export function NavbarDemo() {
   const navItems = [
     {
-      name: "Examples",
-      link: "#examples",
+      name: "Testimonials",
+      link: "#testimonials",
     },
     {
       name: "Pricing",
       link: "#pricing",
     },
     {
-      name: "Contact",
+      name: "Donate",
       link: "#contact",
     },
   ];
@@ -61,7 +61,7 @@ export function NavbarDemo() {
                 key={`mobile-link-${idx}`}
                 href={item.link}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="relative text-neutral-600 dark:text-neutral-300 text-4xl"
+                className="relative text-neutral-600 dark:text-neutral-300 text-xl"
               >
                 <span className="block">{item.name}</span>
               </a>

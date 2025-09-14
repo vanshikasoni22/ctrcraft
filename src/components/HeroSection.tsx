@@ -2,13 +2,23 @@
 import Link from "next/link"
 import { motion } from "motion/react";
 // import { Spotlight } from "./ui/Spotlight"
-import { AuroraBackground } from "./ui/aurora-background";
 import { Button } from "./ui/moving-border";
 
 
 function HeroSection() {
   return (
-    <AuroraBackground>
+    <div className="min-h-screen w-full bg-[#f5f5dc] relative">
+      {/* Warm Beige Texture */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: `
+            radial-gradient(circle at 20% 80%, rgba(120,119,198,0.3) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(255,255,255,0.5) 0%, transparent 50%),
+            radial-gradient(circle at 40% 40%, rgba(120,119,198,0.1) 0%, transparent 50%)`,
+        }}
+      />
+      <div className="relative flex h-[100vh] flex-col items-center justify-center z-10">
             <motion.div
                 initial={{ opacity: 0.0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -20,14 +30,14 @@ function HeroSection() {
                 className="relative flex flex-col gap-4 items-center justify-center px-4"
             >
                 <div className="p-4 relative z-10 w-full text-center">
-                    <h1 className="mt-20 md:mt-0 text-4xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 py-4">Thumbnails That Get Clicks — Instantly.</h1>
-                    <p className="mt-4 font-normal text-base md:text-lg text-neutral-300 max-w-lg mx-auto">Turn your video ideas into scroll-stopping thumbnails with the power of AI. Designed to boost your CTR and grow your channel.
+                    <h1 className="mt-20 md:mt-0 text-4xl md:text-7xl font-bold text-slate-800 py-4 font-merriweather italic">Thumbnails That Get Clicks — Instantly</h1>
+                    <p className="mt-4 text-lg md:text-lg text-slate-600 max-w-lg mx-auto font-poppins font-medium">Turn your video ideas into scroll-stopping thumbnails with the power of AI. Designed to boost your CTR and grow your channel.
                     </p>
-                    <div className="mt-4">
-                        <Link href={"/courses"}>
+                    <div className="mt-6">
+                        <Link href={"/signup"}>
                             <Button
                                 borderRadius="1.75rem"
-                                className="bg-white dark:bg-slate-900 text-black dark:text-white border-neutral-200 dark:border-slate-800"
+                                className="bg-gradient-to-r from-blue-500 to-green-500 text-white border-blue-400 font-poppins"
                             >
                                 Generate a thumbnail
                             </Button>
@@ -35,7 +45,8 @@ function HeroSection() {
                     </div>
                 </div>
             </motion.div>
-    </AuroraBackground>
+      </div>
+    </div>
   )
 }
 
