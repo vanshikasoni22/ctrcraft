@@ -23,8 +23,8 @@ export function NavbarDemo() {
       link: "#pricing",
     },
     {
-      name: "Donate",
-      link: "#contact",
+      name: "FAQs",
+      link: "#faq",
     },
   ];
 

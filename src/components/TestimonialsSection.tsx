@@ -50,7 +50,7 @@ export default function TestimonialsSection({
   };
 
   return (
-    <section className="py-16 bg-gradient-to-r from-slate-100 to-yellow-50">
+    <section id="testimonials" className="py-16 bg-gradient-to-r from-slate-100 to-yellow-50">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl text-slate-800 font-merriweather italic mb-4 font-semibold">
