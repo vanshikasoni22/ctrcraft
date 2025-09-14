@@ -15,16 +15,16 @@ import { useState } from "react";
 export function NavbarDemo() {
   const navItems = [
     {
-      name: "Testimonials",
-      link: "#testimonials",
+      name: "Examples",
+      link: "#examples",
     },
     {
       name: "Pricing",
       link: "#pricing",
     },
     {
-      name: "FAQs",
-      link: "#faq",
+      name: "Testimonials",
+      link: "#testimonials",
     },
   ];
 
@@ -38,7 +38,7 @@ export function NavbarDemo() {
           <NavItems items={navItems} />
           <div className="flex items-center gap-4">
             <NavbarButton variant="secondary">Login</NavbarButton>
-            <NavbarButton variant="primary">Get Started</NavbarButton>
+            <NavbarButton variant="primary" href="/create">Get Started</NavbarButton>
           </div>
         </NavBody>
 
@@ -61,7 +61,7 @@ export function NavbarDemo() {
                 key={`mobile-link-${idx}`}
                 href={item.link}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="relative text-neutral-600 dark:text-neutral-300 text-xl"
+                className="relative text-neutral-600 dark:text-neutral-300"
               >
                 <span className="block">{item.name}</span>
               </a>
@@ -78,8 +78,9 @@ export function NavbarDemo() {
                 onClick={() => setIsMobileMenuOpen(false)}
                 variant="primary"
                 className="w-full"
+                href="/create"
               >
-                Sign up
+                Get Started
               </NavbarButton>
             </div>
           </MobileNavMenu>
