@@ -37,7 +37,7 @@ function HeroSection() {
                         <Link href={"/signup"}>
                             <Button
                                 borderRadius="1.75rem"
-                                className="bg-gradient-to-r from-blue-500 to-green-500 text-white border-blue-400 font-poppins"
+                                className="bg-gradient-to-r from-blue-500 to-green-500 text-white border-blue-400 cursor-pointer font-poppins"
                             >
                                 Generate a thumbnail
                             </Button>
