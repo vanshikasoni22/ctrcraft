@@ -1,7 +1,22 @@
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 
 
-export default function CreatePage() {
+export default async function CreatePage() {
+
+  const session = await auth.api.getSession({
+        headers: await headers() // you need to pass the headers object.
+    });
+
+    console.log("session", session)
+
+    if(!session) {
+        redirect('/auth/signup');
+  }
   return (
-    <div className="flex items-center justify-center pt-55">Hello this is create page</div>
+    <div>
+      Welcome, {session.user.name}!
+    </div>
   )
 }

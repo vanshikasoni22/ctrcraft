@@ -14,30 +14,72 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// --- BetterAuth models (do not rename, BetterAuth uses them internally) ---
+// --- BetterAuth models (exact names and fields required by BetterAuth) ---
 model User {
-  id            String             @id @default(cuid())
-  email         String?            @unique
-  name          String?
+  id            String    @id @default(cuid())
+  name          String
+  email         String
+  emailVerified Boolean
   image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
   // --- Custom fields ---
-  credits       Int                @default(0)
+  credits       Int       @default(0)
 
+  // Relations
+  sessions      Session[]
+  accounts      Account[]
   thumbnails    Thumbnail[]
   transactions  CreditTransaction[]
-  sessions      Session[] 
 
-  createdAt     DateTime           @default(now())
-  updatedAt     DateTime           @updatedAt
+  @@unique([email])
+  @@map("user")
 }
 
 model Session {
-  id           String   @id @default(cuid())
-  userId       String
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  expiresAt    DateTime
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  id          String    @id @default(cuid())
+  expiresAt   DateTime
+  token       String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  ipAddress   String?
+  userAgent   String?
+  userId      String
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([token])
+  @@map("session")
+}
+
+model Account {
+  id                    String    @id @default(cuid())
+  accountId             String
+  providerId            String
+  userId                String
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  @@map("account")
+}
+
+model Verification {
+  id          String    @id @default(cuid())
+  identifier  String
+  value       String
+  expiresAt   DateTime
+  createdAt   DateTime? @default(now())
+  updatedAt   DateTime? @updatedAt
+
+  @@map("verification")
 }
 
 // --- Your app-specific models ---
@@ -63,13 +105,3 @@ enum TransactionType {
   ADD
   SPEND
 }
-
-
-model VerificationToken {
-  id        String   @id @default(cuid())
-  identifier String
-  token     String   @unique
-  expiresAt DateTime
-  createdAt DateTime @default(now())
-}
-

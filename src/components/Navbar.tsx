@@ -10,12 +10,13 @@ import {
   MobileNavToggle,
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { auth } from "@/lib/auth";
 
 export function NavbarDemo() {
   const navItems = [
     {
-      name: "Examples",
+      name: "Testimonials",
       link: "#examples",
     },
     {
@@ -23,12 +24,35 @@ export function NavbarDemo() {
       link: "#pricing",
     },
     {
-      name: "Testimonials",
-      link: "#testimonials",
+      name: "Examples",
+      link: "#example",
     },
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [loginLabel, setLoginLabel] = useState("Login");
+
+
+  useEffect(() => {
+  const checkSession = async () => {
+    try {
+      const res = await fetch("/api/session");
+      const session = await res.json();
+
+      if (session) {
+        setLoginLabel("Logout");
+      } else {
+        setLoginLabel("Login");
+      }
+    } catch (error) {
+      console.error("Error fetching session:", error);
+      setLoginLabel("Login");
+    }
+  };
+
+  checkSession();
+}, []);
+
 
   return (
     <Navbar>
@@ -37,7 +61,7 @@ export function NavbarDemo() {
           <NavbarLogo />
           <NavItems items={navItems} />
           <div className="flex items-center gap-4">
-            <NavbarButton variant="secondary">Login</NavbarButton>
+            <NavbarButton variant="secondary" href="/auth/signin">{loginLabel}</NavbarButton>
             <NavbarButton variant="primary" href="/create">Get Started</NavbarButton>
           </div>
         </NavBody>
@@ -72,7 +96,7 @@ export function NavbarDemo() {
                 variant="primary"
                 className="w-full"
               >
-                Login
+                {loginLabel}
               </NavbarButton>
               <NavbarButton
                 onClick={() => setIsMobileMenuOpen(false)}
