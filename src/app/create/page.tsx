@@ -15,7 +15,7 @@ export default async function CreatePage() {
         redirect('/auth/signup');
   }
   return (
-    <div>
+    <div className="flex items-center justify-center h-screen text-2xl">
       Welcome, {session.user.name}!
     </div>
   )
