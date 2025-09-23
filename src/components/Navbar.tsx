@@ -54,6 +54,24 @@ export function NavbarDemo() {
 }, []);
 
 
+const handleAuthAction = async () => {
+  if (loginLabel === "Logout") {
+    try {
+      const res = await fetch("/api/logout", { method: "POST" });
+      if (res.ok) {
+        setLoginLabel("Login");
+        window.location.reload(); // refresh to clear session everywhere
+      }
+    } catch (err) {
+      console.error("Logout failed:", err);
+    }
+  } else {
+    window.location.href = "/auth/signin";
+  }
+};
+
+
+
   return (
     <Navbar>
         {/* Desktop Navigation */}
@@ -61,7 +79,7 @@ export function NavbarDemo() {
           <NavbarLogo />
           <NavItems items={navItems} />
           <div className="flex items-center gap-4">
-            <NavbarButton variant="secondary" href="/auth/signin">{loginLabel}</NavbarButton>
+            <NavbarButton variant="secondary" href="/auth/signin" onClick={handleAuthAction}>{loginLabel}</NavbarButton>
             <NavbarButton variant="primary" href="/create">Get Started</NavbarButton>
           </div>
         </NavBody>
@@ -92,7 +110,9 @@ export function NavbarDemo() {
             ))}
             <div className="flex w-full flex-col gap-4">
               <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={() => {setIsMobileMenuOpen(false);
+                  handleAuthAction();
+                }}
                 variant="primary"
                 className="w-full"
               >
