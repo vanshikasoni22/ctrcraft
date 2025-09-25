@@ -30,17 +30,20 @@ function HeroSection() {
                 className="relative flex flex-col gap-4 items-center justify-center px-4"
             >
                 <div className="p-4 relative z-10 w-full text-center">
-                    <h1 className="mt-20 md:mt-0 text-4xl md:text-7xl font-bold text-slate-800 py-4 font-merriweather italic">Thumbnails That Get Clicks — Instantly</h1>
-                    <p className="mt-4 text-lg md:text-lg text-slate-600 max-w-lg mx-auto font-poppins font-medium">Turn your video ideas into scroll-stopping thumbnails with the power of AI. Designed to boost your CTR and grow your channel.
+                    <h1 className="mt-20 md:mt-0 text-2xl md:text-4xl font-bold text-slate-800 py-4 font-merriweather italic">Thumbnails That Get Clicks — Instantly</h1>
+                    <p className="mt-4 text-xs md:text-sm text-slate-600 max-w-lg mx-auto font-poppins font-medium">Turn your video ideas into scroll-stopping thumbnails with the power of AI. Designed to boost your CTR and grow your channel.
                     </p>
                     <div className="mt-6">
                         <Link href={"/signup"}>
                             <Button
-                                borderRadius="1.75rem"
-                                className="bg-gradient-to-r from-blue-500 to-green-500 text-white border-blue-400 cursor-pointer font-poppins"
+                              borderRadius="1.75rem"
+                              className="bg-gradient-to-r from-blue-500 to-green-500 text-white 
+                                        border-blue-400 cursor-pointer font-poppins 
+                                        px-4 py-2 text-sm"
                             >
-                                Generate a thumbnail
-                            </Button>
+                            Generate a thumbnail
+                          </Button>
+
                         </Link>
                     </div>
                 </div>
