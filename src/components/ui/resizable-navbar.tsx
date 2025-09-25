@@ -239,10 +239,11 @@ export const NavbarLogo = () => {
       <img
         src="https://ik.imagekit.io/akghosh111/erasebg-transformed%20(1).png?updatedAt=1757783310032"
         alt="logo"
-        width={80}
-        height={80}
+        // width={80}
+        // height={80}
+        className="h-10 w-auto"
       />
-      <span className="font-medium text-black dark:text-white text-lg">CTRcraft</span>
+      <span className="font-medium text-black dark:text-white text-sm">CTRcraft</span>
     </a>
   );
 };
