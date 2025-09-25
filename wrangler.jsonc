@@ -8,5 +8,31 @@
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
+  },
+  "env": {
+    "production": {
+      "bindings": [
+        {
+          "name": "GOOGLE_CLIENT_ID",
+          "type": "secret"
+        },
+        {
+          "name": "GOOGLE_CLIENT_SECRET",
+          "type": "secret"
+        }
+      ]
+    },
+    "development": {
+      "bindings": [
+        {
+          "name": "GOOGLE_CLIENT_ID",
+          "type": "secret"
+        },
+        {
+          "name": "GOOGLE_CLIENT_SECRET",
+          "type": "secret"
+        }
+      ]
+    }
   }
 }
