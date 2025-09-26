@@ -53,10 +53,10 @@ export default function TestimonialsSection({
     <section id="testimonials" className="py-16 bg-gradient-to-r from-slate-100 to-yellow-50">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl text-slate-800 font-merriweather italic mb-4 font-semibold">
+          <h2 className="text-xl md:text-2xl text-slate-800 font-merriweather italic mb-4 font-semibold">
             What Our Users Say
           </h2>
-          <p className="text-lg text-slate-600 font-poppins">
+          <p className="text-sm text-slate-600 font-poppins">
             Join thousands of creators who've transformed their content with CTRcraft
           </p>
         </div>
@@ -86,7 +86,7 @@ export default function TestimonialsSection({
                         clipRule="evenodd"
                       />
                     </svg>
-                    <blockquote className="text-xl md:text-2xl text-slate-700 font-merriweather italic leading-relaxed">
+                    <blockquote className="text-lg md:text-xl text-slate-700 font-merriweather italic leading-relaxed">
                       "{testimonials[currentIndex].quote}"
                     </blockquote>
                   </div>
@@ -98,7 +98,7 @@ export default function TestimonialsSection({
                       alt={testimonials[currentIndex].name}
                       className="w-16 h-16 rounded-full object-cover mb-4 border-4 border-blue-100"
                     />
-                    <h3 className="text-lg font-semibold text-slate-800 font-poppins">
+                    <h3 className="text-sm font-semibold text-slate-800 font-poppins">
                       {testimonials[currentIndex].name}
                     </h3>
                     <p className="text-slate-600 font-poppins">
