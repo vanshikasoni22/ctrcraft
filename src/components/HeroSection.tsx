@@ -36,13 +36,13 @@ function HeroSection() {
                     <div className="mt-6">
                         <Link href={"/signup"}>
                             <Button
-                              borderRadius="1.75rem"
-                              className="bg-gradient-to-r from-blue-500 to-green-500 text-white 
-                                        border-blue-400 cursor-pointer font-poppins 
-                                        px-4 py-2 text-sm"
+                              containerClassName="rounded-full"
+                              className="bg-gradient-to-r from-blue-500 to-green-500 text-white border-blue-400 cursor-pointer font-poppins rounded-full text-sm px-5 py-2"
                             >
-                            Generate a thumbnail
-                          </Button>
+                              Generate a thumbnail
+                            </Button>
+
+
 
                         </Link>
                     </div>
