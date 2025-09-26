@@ -48,6 +48,13 @@ const SignupPage = () => {
     console.log("data", data);
   };
 
+  const handleGithubSignUp = async () => {
+    const data = await authClient.signIn.social({
+      provider: "github"
+    });
+    console.log("data", data);
+  };
+
   return (
     <div className="flex items-center justify-center h-screen">
         <div className="shadow-input mx-auto w-full max-w-md rounded-none bg-white p-4 md:rounded-2xl md:p-8 dark:bg-black">
@@ -112,6 +119,17 @@ const SignupPage = () => {
                 </span>
                 <BottomGradient />
             </button>
+            <button
+              onClick={handleGithubSignUp}
+              type="button"
+              className="group/btn shadow-input relative flex h-10 w-full items-center justify-start space-x-2 rounded-md bg-gray-50 px-4 font-medium text-black dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_#262626]"
+              >
+                <IconBrandGithub className="h-4 w-4 text-neutral-800 dark:text-neutral-300" />
+                <span className="text-sm text-neutral-700 dark:text-neutral-300">
+                  Sign in with GitHub
+                </span>
+                <BottomGradient />
+              </button>
             </div>
         </form>
         </div>

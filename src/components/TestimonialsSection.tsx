@@ -86,7 +86,7 @@ export default function TestimonialsSection({
                         clipRule="evenodd"
                       />
                     </svg>
-                    <blockquote className="text-lg md:text-xl text-slate-700 font-merriweather italic leading-relaxed">
+                    <blockquote className="text-sm md:text-lg text-slate-700 font-merriweather italic leading-relaxed">
                       "{testimonials[currentIndex].quote}"
                     </blockquote>
                   </div>
