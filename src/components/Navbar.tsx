@@ -17,7 +17,7 @@ export function NavbarDemo() {
   const navItems = [
     {
       name: "Testimonials",
-      link: "#examples",
+      link: "#testimonials",
     },
     {
       name: "Pricing",
@@ -25,7 +25,7 @@ export function NavbarDemo() {
     },
     {
       name: "Examples",
-      link: "#example",
+      link: "#examples",
     },
   ];
 
