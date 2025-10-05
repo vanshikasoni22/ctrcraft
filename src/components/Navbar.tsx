@@ -17,7 +17,7 @@ export function NavbarDemo() {
   const navItems = [
     {
       name: "Testimonials",
-      link: "#examples",
+      link: "#testimonials",
     },
     {
       name: "Pricing",
@@ -25,12 +25,13 @@ export function NavbarDemo() {
     },
     {
       name: "Examples",
-      link: "#example",
+      link: "#examples",
     },
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [loginLabel, setLoginLabel] = useState("Login");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 
   useEffect(() => {
@@ -41,12 +42,15 @@ export function NavbarDemo() {
 
       if (session) {
         setLoginLabel("Logout");
+        setIsLoggedIn(true);
       } else {
         setLoginLabel("Login");
+        setIsLoggedIn(false);
       }
     } catch (error) {
       console.error("Error fetching session:", error);
       setLoginLabel("Login");
+      setIsLoggedIn(false);
     }
   };
 
@@ -79,6 +83,9 @@ const handleAuthAction = async () => {
           <NavbarLogo />
           <NavItems items={navItems} />
           <div className="flex items-center gap-4">
+            {isLoggedIn && (
+              <NavbarButton variant="outline" href="/dashboard">Dashboard</NavbarButton>
+            )}
             <NavbarButton variant="secondary" href="/auth/signin" onClick={handleAuthAction}>{loginLabel}</NavbarButton>
             <NavbarButton variant="primary" href="/create">Get Started</NavbarButton>
           </div>
@@ -109,6 +116,16 @@ const handleAuthAction = async () => {
               </a>
             ))}
             <div className="flex w-full flex-col gap-4">
+              {isLoggedIn && (
+                <NavbarButton
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  variant="outline"
+                  className="w-full"
+                  href="/dashboard"
+                >
+                  Dashboard
+                </NavbarButton>
+              )}
               <NavbarButton
                 onClick={() => {setIsMobileMenuOpen(false);
                   handleAuthAction();
